@@ -30,14 +30,14 @@
  */
 #}
 <!DOCTYPE html>
-<html{{ html_attributes }}>
+<html {{ html_attributes }}>
 <head>
   {{ head }}
   <title>{{ head_title|safe_join(' | ') }}</title>
   {{ styles }}
   {{ scripts }}
 </head>
-<body{{ attributes }}>
+<body {{ attributes }}>
 <a href="#main-content" class="visually-hidden focusable">
   {{ 'Skip to main content'|t }}
 </a>
