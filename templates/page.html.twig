@@ -49,6 +49,7 @@
  * - page.header
  * - page.help
  * - page.highlighted
+ * - page.breadcrumb
  * - page.content
  * - page.sidebar_first
  * - page.sidebar_second
@@ -142,7 +143,7 @@
       </div>
     {% endif %}
     <a id="main-content"></a>
-    {% if breadcrumb %} {{ breadcrumb }} {% endif %}
+    {% if page.breadcrumb %} {{ page.breadcrumb }} {% endif %}
     {% if title and not is_front %}
       {{ title_prefix }}
       <h1 id="page-title" class="title">{{ title }}</h1>
