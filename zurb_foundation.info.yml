@@ -17,6 +17,7 @@ libraries:
 
 regions:
   header: Header
+  messages: Messages
   help: Help
   page_top: 'Page top'
   page_bottom: 'Page bottom'

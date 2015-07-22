@@ -119,10 +119,10 @@
   </div>
 </div>
 
-{% if messages and not zurb_foundation_messages_modal %}
+{% if page.messages and not zurb_foundation_messages_modal %}
 <div class="l-messages row">
   <div class="large-12 columns">
-    {{ messages }}
+    {{ page.messages }}
   </div>
 </div>
 {% endif %}
