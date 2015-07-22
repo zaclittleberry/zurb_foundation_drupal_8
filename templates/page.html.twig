@@ -63,143 +63,173 @@
  */
 #}
 
-<header class="row">
-  {% if linked_site_name or linked_logo %}
-    <div class="large-2 columns">
-      {% if linked_logo %}
-        {{ linked_logo }}
-      {% endif %}
+<!--.page -->
+<div role="document" class="page">
+
+  <!--.l-header -->
+  <header role="banner" class="l-header">
+    {# if top-bar #}
+    <div class="{# top-bar-classes #}">
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name"><h1 id="site-name">{{ linked_site_name }}</h1></li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+        <section class="top-bar-section">
+          <div class="medium-left">
+            {{ page.primary_menu }}
+          </div>
+          <div class="medium-right">
+            {{ page.secondary_menu }}
+          </div>
+        </section>
+      </nav>
     </div>
-    <div class="large-4 columns">
-      {% if is_front %}
-        <h1 id="site-name">{{ linked_site_name }}</h1>
-      {% else %}
-        <div id="site-name">{{ linked_site_name }}</div>
+    {# endif #}
+
+    {# if alt-header #}
+    <section class="row">
+      {% if linked_site_name or linked_logo %}
+        <div class="large-2 columns">
+          {% if linked_logo %}
+            {{ linked_logo }}
+          {% endif %}
+        </div>
+        <div class="large-4 columns">
+          {% if is_front %}
+            <h1 id="site-name">{{ linked_site_name }}</h1>
+          {% else %}
+            <div id="site-name">{{ linked_site_name }}</div>
+          {% endif %}
+        </div>
       {% endif %}
+    </section>
+    {# endif #}
+  </header>
+
+  {% if page.header %}
+    <div class="row">
+      <div class="large-12 columns">
+        {{ page.header }}
+      </div>
     </div>
   {% endif %}
-</header>
 
-{% if page.header %}
   <div class="row">
-    <div class="large-12 columns">
-      {{ page.header }}
-    </div>
-  </div>
-{% endif %}
-
-<div class="row">
-  <div class="{{ site_slogan ? 'large-6' : 'large-4 columns large-offset-8' }} columns hide-for-small">
-    <p>
-      {% if logged_in %}
-        <a href="{{ path('user.page') }}">{{ 'My Account'|t }}</a>
-        <a href="{{ path('user.logout') }}">{{ 'Logout'|t }}</a>
-      {% else %}
-        <a href="{{ path('user.login') }}">{{ 'Login'|t }}</a>
-        <a href="{{ path('user.register') }}">{{ 'Sign Up'|t }}</a>
-      {% endif %}
-    </p>
-  </div>
-  {% if site_slogan %}
-    <div class="large-6 columns hide-for-small">
-      {{ site_slogan }}
-    </div>
-  {% endif %}
-  <div class="show-for-small">
-    <div class="six mobile-two columns">
+    <div class="{{ site_slogan ? 'large-6' : 'large-4 columns large-offset-8' }} columns hide-for-small">
       <p>
-        <a href="{{ path('user.login') }}" class="radius button">{{ 'Login'|t }}</a>
+        {% if logged_in %}
+          <a href="{{ path('user.page') }}">{{ 'My Account'|t }}</a>
+          <a href="{{ path('user.logout') }}">{{ 'Logout'|t }}</a>
+        {% else %}
+          <a href="{{ path('user.login') }}">{{ 'Login'|t }}</a>
+          <a href="{{ path('user.register') }}">{{ 'Sign Up'|t }}</a>
+        {% endif %}
       </p>
     </div>
-    <div class="six mobile-two columns">
-      <p>
-        <a href="{{ path('user.register') }}" class="radius success button">{{ 'Sign Up'|t }}</a>
-      </p>
-    </div>
-  </div>
-</div>
-
-{% if page.messages and not zurb_foundation_messages_modal %}
-<div class="l-messages row">
-  <div class="large-12 columns">
-    {{ page.messages }}
-  </div>
-</div>
-{% endif %}
-
-{% if page.help %}
-<div class="l-help row">
-  <div class="large-12 columns">
-    {{ page.help }}
-  </div>
-</div>
-{% endif %}
-
-<div class="row">
-  <div id="main" class="{{ main_grid }} columns">
-    {% if page.highlighted %}
-      <div class="highlight panel callout">
-        {{ page.highlighted }}
+    {% if site_slogan %}
+      <div class="large-6 columns hide-for-small">
+        {{ site_slogan }}
       </div>
     {% endif %}
-    <a id="main-content"></a>
-    {% if page.breadcrumb %} {{ page.breadcrumb }} {% endif %}
-    {% if title and not is_front %}
-      {{ title_prefix }}
-      <h1 id="page-title" class="title">{{ title }}</h1>
-      {{ title_suffix }}
-    {% endif %}
-
-    {% if tabs %}
-      {{ tabs }}
-      {% if tabs2 %} {{ tabs2 }} {% endif %}
-    {% endif %}
-    {% if action_links %}
-      <ul class="action-links">
-        {{ action_links }}
-      </ul>
-    {% endif %}
-    {{ page.content }}
+    <div class="show-for-small">
+      <div class="six mobile-two columns">
+        <p>
+          <a href="{{ path('user.login') }}" class="radius button">{{ 'Login'|t }}</a>
+        </p>
+      </div>
+      <div class="six mobile-two columns">
+        <p>
+          <a href="{{ path('user.register') }}" class="radius success button">{{ 'Sign Up'|t }}</a>
+        </p>
+      </div>
+    </div>
   </div>
-  {% if page.sidebar_first %}
-    <div id="sidebar-first" class="{{ sidebar_first_grid }} columns sidebar ">
-      {{ page.sidebar_first }}
-    </div>
-  {% endif %}
-  {% if page.sidebar_second %}
-    <div id="sidebar-second" class="{{ sidebar_sec_grid }} columns sidebar">
-      {{ page.sidebar_second }}
-    </div>
-  {% endif %}
-</div>
-{% if page.footer_first or page.footer_middle or page.footer_last %}
-  <footer class="row">
-    {% if page.footer_first %}
-      <div id="footer-first" class="large-4 columns">
-        {{ page.footer_first }}
-      </div>
-    {% endif %}
-    {% if page.footer_middle %}
-      <div id="footer-middle" class="large-4 columns">
-        {{ page.footer_middle }}
-      </div>
-    {% endif %}
-    {% if page.footer_last %}
-      <div id="footer-last" class="large-4 columns">
-        {{ page.footer_last }}
-      </div>
-    {% endif %}
-  </footer>
-{% endif %}
-<div class="bottom-bar panel">
-  <div class="row">
-  {% if page.footer %}
-    <div class="footer large-12 columns">
-      {{ page.footer }}
-    </div>
-  {% endif %}
+
+  {% if page.messages and not zurb_foundation_messages_modal %}
+  <div class="l-messages row">
     <div class="large-12 columns">
-    &copy; {{ "now"|date('Y') }} {{ site_name }} {{ 'All rights reserved.'|t }}
+      {{ page.messages }}
     </div>
   </div>
+  {% endif %}
+
+  {% if page.help %}
+  <div class="l-help row">
+    <div class="large-12 columns">
+      {{ page.help }}
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="row">
+    <div id="main" class="{{ main_grid }} columns">
+      {% if page.highlighted %}
+        <div class="highlight panel callout">
+          {{ page.highlighted }}
+        </div>
+      {% endif %}
+      <a id="main-content"></a>
+      {% if page.breadcrumb %} {{ page.breadcrumb }} {% endif %}
+      {% if title and not is_front %}
+        {{ title_prefix }}
+        <h1 id="page-title" class="title">{{ title }}</h1>
+        {{ title_suffix }}
+      {% endif %}
+
+      {% if tabs %}
+        {{ tabs }}
+        {% if tabs2 %} {{ tabs2 }} {% endif %}
+      {% endif %}
+      {% if action_links %}
+        <ul class="action-links">
+          {{ action_links }}
+        </ul>
+      {% endif %}
+      {{ page.content }}
+    </div>
+    {% if page.sidebar_first %}
+      <div id="sidebar-first" class="{{ sidebar_first_grid }} columns sidebar ">
+        {{ page.sidebar_first }}
+      </div>
+    {% endif %}
+    {% if page.sidebar_second %}
+      <div id="sidebar-second" class="{{ sidebar_sec_grid }} columns sidebar">
+        {{ page.sidebar_second }}
+      </div>
+    {% endif %}
+  </div>
+  {% if page.footer_first or page.footer_middle or page.footer_last %}
+    <footer class="row">
+      {% if page.footer_first %}
+        <div id="footer-first" class="large-4 columns">
+          {{ page.footer_first }}
+        </div>
+      {% endif %}
+      {% if page.footer_middle %}
+        <div id="footer-middle" class="large-4 columns">
+          {{ page.footer_middle }}
+        </div>
+      {% endif %}
+      {% if page.footer_last %}
+        <div id="footer-last" class="large-4 columns">
+          {{ page.footer_last }}
+        </div>
+      {% endif %}
+    </footer>
+  {% endif %}
+  <div class="bottom-bar panel">
+    <div class="row">
+    {% if page.footer %}
+      <div class="footer large-12 columns">
+        {{ page.footer }}
+      </div>
+    {% endif %}
+      <div class="large-12 columns">
+      &copy; {{ "now"|date('Y') }} {{ site_name }} {{ 'All rights reserved.'|t }}
+      </div>
+    </div>
+  </div>
+
 </div>
+<!--/.page -->

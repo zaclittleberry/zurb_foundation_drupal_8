@@ -3,6 +3,7 @@ global:
   css:
     base:
       css/foundation.min.css: {}
+      css/additional.css: {}
   js:
     js/foundation.min.js: {}
   dependencies:
@@ -16,6 +17,7 @@ development:
       css/foundation.css: {}
       css/drupal.css: {}
       css/app.css: {}
+      css/additional.css: {}
   js:
     js/foundation/foundation.alerts.js: {}
     js/foundation/foundation.clearing.js: {}

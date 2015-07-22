@@ -16,6 +16,8 @@ libraries:
 # Regions are output in the page.html.twig
 
 regions:
+  primary_menu: 'Primary Menu'
+  secondary_menu: 'Secondary Menu'
   header: Header
   messages: Messages
   help: Help

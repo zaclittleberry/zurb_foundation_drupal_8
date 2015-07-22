@@ -1,0 +1,24 @@
+/* Additional styles needed to cleany pair foundation with Drupal */
+
+/* Styles needed for top-bar nav */
+
+.menu-item{
+  padding-top:0;
+}
+
+.top-bar-section ul.contextual-links {
+  display: none;
+}
+.top-bar-section ul.menu a.is-active{
+  background: #008CBA;
+  color: #fff;
+}
+
+@media only screen and (min-width: 40.0625em){
+  .medium-left{
+    float:left;
+  }
+  .medium-right{
+    float:right;
+  }
+}
