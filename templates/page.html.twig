@@ -193,6 +193,11 @@
 {% endif %}
 <div class="bottom-bar panel">
   <div class="row">
+  {% if page.footer %}
+    <div class="footer large-12 columns">
+      {{ page.footer }}
+    </div>
+  {% endif %}
     <div class="large-12 columns">
     &copy; {{ "now"|date('Y') }} {{ site_name }} {{ 'All rights reserved.'|t }}
     </div>
