@@ -286,14 +286,6 @@ function zurb_foundation_preprocess_page(&$variables) {
 //    drupal_add_html_head($script, 'zurb_respondjs');
 //  }
 
-  // initialize Foundation library last
-  $variables['page']['#attached']['js'][] = array(
-    'type' => 'inline',
-    'scope' => 'footer',
-    'weight' => 9999,
-    'data' => '(function ($) { $(document).foundation(); })(jQuery);'
-  );
-
   // Add page--node_type.html.twig suggestions
   if (!empty($variables['node'])) {
     $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->bundle();
