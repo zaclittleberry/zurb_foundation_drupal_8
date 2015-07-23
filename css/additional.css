@@ -6,9 +6,31 @@
   padding-top:0;
 }
 
-.top-bar-section ul.contextual-links {
+ul.contextual-links {
   display: none;
 }
+
+.contextual-region .contextual .contextual-links li {
+  float:none;
+}
+
+.top-bar-section .contextual-region .contextual .contextual-links a{
+  background-color: #fff;
+  color: #333;
+  font-size: small;
+  line-height: 0.8em;
+  padding: 0.4em 0.6em;
+}
+
+.top-bar-section .contextual-region .contextual .contextual-links a:hover{
+  background-color: #fff;
+  color: #333;
+}
+
+.touch .contextual-region .contextual .contextual-links a {
+  font-size: large;
+}
+
 .top-bar-section ul.menu a.is-active{
   background: #008CBA;
   color: #fff;
