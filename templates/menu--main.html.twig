@@ -25,26 +25,24 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('menu', 'nav-bar') }}>
-    {% else %}
-      <ul class="menu nav-bar">
+      <ul class="left">
     {% endif %}
       {% for item in items %}
-        {%
-          set item_classes = [
-            item.below is not empty ? 'has-flyout'
-          ]
-        %}
-        <li{{ item.attributes.addClass(item_classes) }}>
+        {% if item.below %}
+          <li class="has-dropdown">
+        {% else %}
+          <li>
+        {% endif %}
           {{ link(item.title, item.url) }}
           {% if item.below %}
-            <a href="#" class="flyout-toggle"><span> </span></a>
-            <ul class="flyout">
+            <ul class="dropdown">
               {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
             </ul>
           {% endif %}
         </li>
       {% endfor %}
-    </ul>
+    {% if menu_level == 0 %}
+  </ul>
+    {% endif %}
   {% endif %}
 {% endmacro %}

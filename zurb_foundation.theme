@@ -60,6 +60,8 @@ function zurb_foundation_preprocess_breadcrumb(&$variables) {
  * Implements hook_preprocess_block()
  */
 function zurb_foundation_preprocess_block(&$variables) {
+  // Add block--block_type--region.html.twig suggestions
+  //$variables['theme_hook_suggestions'][] = 'block__' . $variables['elements']['#node']->bundle() . '__' . $variables['view_mode'];
   // Convenience variable for block headers.
   $title_class = &$variables['title_attributes']['class'];
 
