@@ -251,7 +251,7 @@ function zurb_foundation_preprocess_html(&$variables) {
  /*
 function zurb_foundation_preprocess_menu(&$variables){
   dpm($variables);
-}*/
+}
 
 function zurb_foundation_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
 if($hook=='menu'){
@@ -259,7 +259,7 @@ if($hook=='menu'){
 }
 
 }
-
+*/
 
 /**
  * Implements template_preprocess_node
